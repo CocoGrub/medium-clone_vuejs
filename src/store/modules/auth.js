@@ -7,4 +7,12 @@ const mutations = {
   },
 }
 
-export default {state, mutations}
+const actions = {
+  registerStart(context) {
+    setTimeout(() => {
+      context.commit('registerStart')
+    }, 1000)
+  },
+}
+
+export default {state, mutations, actions}

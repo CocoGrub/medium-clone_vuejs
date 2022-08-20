@@ -53,7 +53,7 @@ export default {
   methods: {
     submitForm() {
       console.log('xxx')
-      this.$store.commit('registerStart')
+      this.$store.dispatch('registerStart')
     },
   },
   computed: {
