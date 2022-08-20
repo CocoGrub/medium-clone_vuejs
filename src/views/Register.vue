@@ -34,14 +34,13 @@
               />
             </fieldset>
             <button
+              @click="submitForm"
               class="btn btn-lg btn-primary pull-xs-right"
-              :disabled="isSubmitting"
+              :disabled="isSubmitted"
             >
               Sign Up
             </button>
           </form>
-          <button @click="increaseCounter">click</button>
-          <div>{{ getCount }}</div>
         </div>
       </div>
     </div>
@@ -52,13 +51,14 @@
 export default {
   name: 'McvRegister',
   methods: {
-    increaseCounter() {
-      this.$store.commit('incrementCounter')
+    submitForm() {
+      console.log('xxx')
+      this.$store.commit('registerStart')
     },
   },
   computed: {
-    getCount() {
-      return this.$store.state.counter
+    isSubmitted() {
+      return this.$store.state.auth.isSubmitting
     },
   },
 }

@@ -1,16 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import auth from '@/store/modules/auth'
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  state: {counter: 0},
+  state: {},
   getters: {},
-  mutations: {
-    incrementCounter() {
-      this.state.counter += 1
-    },
-  },
+  mutations: {},
   actions: {},
-  modules: {},
+  modules: {
+    auth: auth,
+  },
 })
