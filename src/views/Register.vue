@@ -7,10 +7,9 @@
           <p class="text-xs-center">
             <router-link :to="{name: 'login'}"> Need an account? </router-link>
           </p>
-          VALIDATION ERRORS
           <mcv-validation-errors
-            v-if="validationError"
-            :validationError="validationError"
+            v-if="validationErrors"
+            :validationErrors="validationErrors"
           />
           <form @submit.prevent="onSubmit">
             <fieldset class="form-group">
@@ -89,8 +88,8 @@ export default {
     isSubmitted() {
       return this.$store.state.auth.isSubmitting
     },
-    validationError() {
-      return this.$store.state.auth.validationError
+    validationErrors() {
+      return this.$store.state.auth.validationErrors
     },
   },
 }

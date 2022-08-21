@@ -12,14 +12,16 @@
 export default {
   name: 'McvValidationErrors',
   props: {
-    validationError: {
+    validationErrors: {
       type: Object,
-      required: false,
+      required: true,
     },
   },
   computed: {
     errorMessages() {
-      return ["email can't be blank", "password can't be blank"]
+      return Object.keys(this.validationErrors).map((name) => {
+        return `${name} ${this.validationErrors[name]}`
+      })
     },
   },
 }

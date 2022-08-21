@@ -5,12 +5,12 @@ const state = {
   isSubmitting: false,
   currentUser: null,
   user: null,
-  validiationError: null,
+  validationErrors: null,
   isLoggedIn: null,
 }
 const mutations = {
   registerStart(state) {
-    state.validiationError = false
+    state.validationErrors = false
     state.isSubmitting = true
   },
   registerSuccess(state, payload) {
@@ -20,7 +20,7 @@ const mutations = {
   },
   registerFail(state, payload) {
     state.isSubmitting = false
-    state.errors = payload
+    state.validationErrors = payload
   },
 }
 
