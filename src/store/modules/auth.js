@@ -1,6 +1,15 @@
 import authApi from '@/api/auth'
 import {setItem} from '@/helpers/persistantStorage'
 
+const mutationsTypes = {
+  registerStart: '[auth] registerStart',
+  registerSuccess: '[auth] registerSuccess',
+  registerFail: '[auth] registerFail',
+}
+export const actionsTypes = {
+  register: '[auth] register',
+}
+
 const state = {
   isSubmitting: false,
   currentUser: null,
@@ -9,23 +18,23 @@ const state = {
   isLoggedIn: null,
 }
 const mutations = {
-  registerStart(state) {
+  [mutationsTypes.registerStart](state) {
     state.validationErrors = false
     state.isSubmitting = true
   },
-  registerSuccess(state, payload) {
+  [mutationsTypes.registerSuccess](state, payload) {
     state.isSubmitting = false
     state.currentUser = payload
     state.isLoggedIn = true
   },
-  registerFail(state, payload) {
+  [mutationsTypes.registerFail](state, payload) {
     state.isSubmitting = false
     state.validationErrors = payload
   },
 }
 
 const actions = {
-  ARegister(context, credentials) {
+  [actionsTypes.register](context, credentials) {
     context.commit('registerStart')
     return new Promise((resolve, reject) => {
       authApi

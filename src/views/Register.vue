@@ -55,6 +55,7 @@
 
 <script>
 import McvValidationErrors from '@/components/ValidationErrors'
+import {actionsTypes} from '@/store/modules/auth'
 
 export default {
   name: 'McvRegister',
@@ -70,7 +71,7 @@ export default {
     submitForm() {
       console.log('xxx')
       this.$store
-        .dispatch('ARegister', {
+        .dispatch([actionsTypes.register], {
           email: this.email,
           username: this.username,
           password: this.password,
