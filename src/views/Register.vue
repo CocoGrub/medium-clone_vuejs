@@ -53,7 +53,18 @@ export default {
   methods: {
     submitForm() {
       console.log('xxx')
-      this.$store.dispatch('registerStart')
+      this.$store
+        .dispatch('ARegister', {
+          email: 'testoppo@kdssa.com',
+          username: 'testoppo',
+          password: 'testoppo',
+        })
+        .then((response) => {
+          console.log(response, 'succes')
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     },
   },
   computed: {
