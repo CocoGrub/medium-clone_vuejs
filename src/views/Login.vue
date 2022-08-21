@@ -5,8 +5,8 @@
         <div class="col-md-6 offset-md-3 col-xs-12">
           <h1 class="text-xs-center">Sign up</h1>
           <p class="text-xs-center">
-            <router-link :to="{name: 'login'}">
-              Already have an account?
+            <router-link :to="{name: 'register'}">
+              Need an account?
             </router-link>
           </p>
           <mcv-validation-errors
@@ -14,15 +14,6 @@
             :validationErrors="validationErrors"
           />
           <form @submit.prevent="onSubmit">
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="text"
-                placeholder="Username"
-                autocomplete
-                v-model="username"
-              />
-            </fieldset>
             <fieldset class="form-group">
               <input
                 class="form-control form-control-lg"
@@ -46,7 +37,7 @@
               class="btn btn-lg btn-primary pull-xs-right"
               :disabled="isSubmitted"
             >
-              Sign Up
+              Sign In
             </button>
           </form>
         </div>
@@ -60,27 +51,23 @@ import McvValidationErrors from '@/components/ValidationErrors'
 import {actionsTypes} from '@/store/modules/auth'
 
 export default {
-  name: 'McvRegister',
+  name: 'McvLogin',
   components: {'mcv-validation-errors': McvValidationErrors},
   data() {
     return {
       email: '',
-      username: '',
       password: '',
     }
   },
   methods: {
     submitForm() {
-      console.log('xxx')
       this.$store
-        .dispatch([actionsTypes.register], {
+        .dispatch([actionsTypes.login], {
           email: this.email,
-          username: this.username,
           password: this.password,
         })
-        .then((response) => {
+        .then(() => {
           this.$router.push({name: 'home'})
-          console.log(response, 'succes')
         })
         .catch((error) => {
           console.log(error)
