@@ -62,7 +62,7 @@ export default {
   methods: {
     submitForm() {
       this.$store
-        .dispatch([actionsTypes.login], {
+        .dispatch(actionsTypes.login, {
           email: this.email,
           password: this.password,
         })

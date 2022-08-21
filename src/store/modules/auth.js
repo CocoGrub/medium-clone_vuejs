@@ -57,33 +57,31 @@ const actions = {
       authApi
         .register(credentials)
         .then((response) => {
-          context.commit([mutationsTypes.registerSuccess], response.data.user)
+          context.commit(mutationsTypes.registerSuccess, response.data.user)
           setItem('accessTocken', response.data.user.token)
           resolve(response)
         })
         .catch((result) => {
           reject(result)
           context.commit(
-            [mutationsTypes.registerFail],
+            mutationsTypes.registerFail,
             result.response.data.errors
           )
         })
     })
   },
   [actionsTypes.login](context, credentials) {
-    context.commit([mutationsTypes.loginStart])
-    console.log(credentials)
+    context.commit(mutationsTypes.loginStart)
     return new Promise(() => {
       authApi
         .login(credentials)
         .then((response) => {
-          context.commit(
-            [mutationsTypes.loginSuccess](state, response.data.user)
-          )
+          context.commit(mutationsTypes.loginSuccess(state, response.data.user))
         })
         .catch((result) => {
           context.commit(
-            [mutationsTypes.loginFail](state, result.response.data.user)
+            mutationsTypes.loginFail,
+            (state, result.response.data.errors)
           )
         })
     })

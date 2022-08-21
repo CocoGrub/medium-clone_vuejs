@@ -73,7 +73,7 @@ export default {
     submitForm() {
       console.log('xxx')
       this.$store
-        .dispatch([actionsTypes.register], {
+        .dispatch(actionsTypes.register, {
           email: this.email,
           username: this.username,
           password: this.password,
