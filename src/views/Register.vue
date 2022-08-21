@@ -58,6 +58,7 @@
 <script>
 import McvValidationErrors from '@/components/ValidationErrors'
 import {actionsTypes} from '@/store/modules/auth'
+import {mapState} from 'vuex'
 
 export default {
   name: 'McvRegister',
@@ -71,7 +72,6 @@ export default {
   },
   methods: {
     submitForm() {
-      console.log('xxx')
       this.$store
         .dispatch(actionsTypes.register, {
           email: this.email,
@@ -88,12 +88,17 @@ export default {
     },
   },
   computed: {
-    isSubmitted() {
-      return this.$store.state.auth.isSubmitting
-    },
-    validationErrors() {
-      return this.$store.state.auth.validationErrors
-    },
+    ...mapState({
+      // spread позволяет использовать значения из mapState в других computed значениях
+      isSubmitted: (state) => state.auth.isSubmitting,
+      validationErrors: (state) => state.auth.validationErrors,
+    }),
+    // isSubmitted() {
+    //   return this.$store.state.auth.isSubmitting
+    // },
+    // validationErrors() {
+    //   return this.$store.state.auth.validationErrors
+    // },
   },
 }
 </script>
