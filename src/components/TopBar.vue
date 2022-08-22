@@ -10,7 +10,7 @@
             Home
           </router-link>
         </li>
-        <template v-if="isAnonymous">
+        <template v-if="isLoggedIn">
           <li class="nav-item">
             <router-link
               class="nav-link"
@@ -21,6 +21,7 @@
               &nbsp; New Article
             </router-link>
           </li>
+
           <li class="nav-item">
             <router-link
               class="nav-link"
@@ -31,11 +32,12 @@
               &nbsp; Settings
             </router-link>
           </li>
+
           <li class="nav-item">
             <router-link
               class="nav-link"
               :to="{
-                name: userProfile,
+                name: 'userProfile',
                 params: {
                   slug: currentUser.username,
                 },
@@ -47,7 +49,7 @@
             </router-link>
           </li>
         </template>
-        <template v-if="!isLoggedIn">
+        <template v-if="isAnonymous">
           <li class="nav-item">
             <router-link
               class="nav-link"

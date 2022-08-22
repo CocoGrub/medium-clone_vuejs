@@ -7,19 +7,26 @@ const state = {
   user: null,
   validationErrors: null,
   isLoggedIn: null,
+  isLoading: false,
 }
 
 const mutationsTypes = {
   registerStart: '[auth] registerStart',
   registerSuccess: '[auth] registerSuccess',
   registerFail: '[auth] registerFail',
+
   loginStart: '[auth] registerStart',
   loginSuccess: '[auth] registerSuccess',
   loginFail: '[auth] registerFail',
+
+  getCurrentUserStart: '[auth] getCurrentUserStart',
+  getCurrentUserSuccess: '[auth] getCurrentUserSuccess',
+  getCurrentUserFail: '[auth] getCurrentUserFail',
 }
 export const actionsTypes = {
   register: '[auth] register',
   login: '[auth] login',
+  getCurrentUser: '[auth] getCurrentUser',
 }
 
 const mutations = {
@@ -49,6 +56,19 @@ const mutations = {
     state.isSubmitting = false
     state.validationErrors = payload
   },
+  [mutationsTypes.getCurrentUserStart](state) {
+    state.isLoading = true
+  },
+  [mutationsTypes.getCurrentUserSuccess](state, payload) {
+    state.isLoading = false
+    state.currentUser = payload
+    state.isLoggedIn = true
+  },
+  [mutationsTypes.getCurrentUserFail](state) {
+    state.isLoading = false
+    state.isLoggedIn = false
+    state.currentUser = null
+  },
 }
 
 const actions = {
@@ -59,7 +79,7 @@ const actions = {
         .register(credentials)
         .then((response) => {
           context.commit(mutationsTypes.registerSuccess, response.data.user)
-          setItem('accessTocken', response.data.user.token)
+          setItem('accessToken', response.data.user.token)
           resolve(response)
         })
         .catch((result) => {
@@ -84,6 +104,24 @@ const actions = {
             mutationsTypes.loginFail,
             (state, result.response.data.errors)
           )
+        })
+    })
+  },
+  [actionsTypes.getCurrentUser](context) {
+    context.commit(mutationsTypes.getCurrentUserStart)
+    return new Promise((resolve) => {
+      authApi
+        .getCurrentUser()
+        .then((response) => {
+          console.log(response.data.user)
+          context.commit(
+            mutationsTypes.getCurrentUserSuccess,
+            response.data.user
+          )
+          resolve(response.data.user)
+        })
+        .catch(() => {
+          context.commit(mutationsTypes.getCurrentUserFail)
         })
     })
   },
