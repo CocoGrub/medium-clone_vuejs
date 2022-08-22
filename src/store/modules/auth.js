@@ -89,4 +89,23 @@ const actions = {
   },
 }
 
-export default {state, mutations, actions}
+export const getterTypes = {
+  currentUser: '[auth] current user',
+  isLoggedIn: '[auth] isLoggedIn',
+  isAnonymous: '[auth] isAnonymous',
+}
+
+const getters = {
+  // getters доступны отовсюду
+  [getterTypes.currentUser]: (state) => {
+    return state.currentUser
+  },
+  [getterTypes.isLoggedIn]: (state) => {
+    return Boolean(state.isLoggedIn)
+  },
+  [getterTypes.isAnonymous]: (state) => {
+    return state.isLoggedIn === false
+  },
+}
+
+export default {state, mutations, actions, getters}
