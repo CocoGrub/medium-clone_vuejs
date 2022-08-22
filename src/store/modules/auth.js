@@ -1,6 +1,14 @@
 import authApi from '@/api/auth'
 import {setItem} from '@/helpers/persistantStorage'
 
+const state = {
+  isSubmitting: false,
+  currentUser: null,
+  user: null,
+  validationErrors: null,
+  isLoggedIn: null,
+}
+
 const mutationsTypes = {
   registerStart: '[auth] registerStart',
   registerSuccess: '[auth] registerSuccess',
@@ -14,13 +22,6 @@ export const actionsTypes = {
   login: '[auth] login',
 }
 
-const state = {
-  isSubmitting: false,
-  currentUser: null,
-  user: null,
-  validationErrors: null,
-  isLoggedIn: null,
-}
 const mutations = {
   [mutationsTypes.registerStart](state) {
     state.validationErrors = false
