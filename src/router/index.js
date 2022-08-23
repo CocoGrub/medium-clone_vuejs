@@ -8,11 +8,6 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'globalFeed',
-    component: McvGlobalFeed,
-  },
-  {
     path: '/register',
     name: 'register',
     component: Register,
@@ -20,6 +15,51 @@ const routes = [
   {
     path: '/login',
     name: 'login',
+    component: Login,
+  },
+  {
+    path: '/',
+    name: 'globalFeed',
+    component: McvGlobalFeed,
+  },
+  {
+    path: '/feed',
+    name: 'yourFeed',
+    component: Login,
+  },
+  {
+    path: '/tags/:slug',
+    name: 'yourFeed',
+    component: Login,
+  },
+  {
+    path: '/articles/new',
+    name: 'createArticle',
+    component: Login,
+  },
+  {
+    path: '/articles/:slug',
+    name: 'article',
+    component: Login,
+  },
+  {
+    path: '/articles/:slug/edit',
+    name: 'editArticle',
+    component: Login,
+  },
+  {
+    path: '/settings',
+    name: 'settings',
+    component: Login,
+  },
+  {
+    path: '/profiles/:slug',
+    name: 'userProfile',
+    component: Login,
+  },
+  {
+    path: '/profiles/:slug/favorites',
+    name: 'userProfileFavorites',
     component: Login,
   },
 ]
