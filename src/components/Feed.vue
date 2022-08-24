@@ -26,25 +26,41 @@
           </div>
           <div class="pull-xs-right">ADD to favorites</div>
         </div>
-        <router-link to="{name:'article',params:{slug:article.slug}}">
-          <h1>{{ article.title }}</h1>
-          <p>{{ article.description }}</p>
-          <span>Read more...</span>
-          TAG-LIST
-        </router-link>
-        Pagination
+        <div>
+          <router-link to="{name:'article',params:{slug:article.slug}}">
+            <h1>{{ article.title }}</h1>
+            <p>{{ article.description }}</p>
+            <span>Read more...</span>
+          </router-link>
+        </div>
       </div>
+      <McvPagination
+        :total="total"
+        :limit="limit"
+        :currentPage="currentPage"
+        :url="url"
+      >
+      </McvPagination>
     </div>
   </div>
 </template>
 
 <script>
+import McvPagination from '@/components/Pagination'
 import {actionsTypes} from '@/store/modules/feed'
 import {mapState} from 'vuex'
 export default {
   name: 'McvFeed',
-  data: () => {
-    return {}
+  components: {
+    McvPagination,
+  },
+  data() {
+    return {
+      total: 500,
+      limit: 10,
+      currentPage: 5,
+      url: '/tags',
+    }
   },
   props: {
     apiUrl: {
