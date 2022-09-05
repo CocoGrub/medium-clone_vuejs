@@ -1,9 +1,15 @@
 <script>
 import {mapState} from 'vuex'
 import {actionsTypes} from '@/store/modules/popularTags'
+import McvLoading from '@/store/modules/Loading'
+import McvErrorMessage from '@/store/modules/ErrorMessage'
 
 export default {
   name: 'mcv-popularTags',
+  components: {
+    McvLoading,
+    McvErrorMessage,
+  },
   computed: {
     ...mapState({
       popularTags: (state) => state.popularTags.data,
@@ -24,8 +30,8 @@ export default {
 
 <template>
   <div>
-    <div v-if="isLoading">Loading...</div>
-    <div v-if="error">Something went wrong</div>
+    <mcv-loading :is="loading" />
+    <mcv-error-message :is="error" />
     <div class="sidbar" v-if="popularTags">
       <p>Popular tags</p>
       <router-link

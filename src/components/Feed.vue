@@ -1,7 +1,7 @@
 <template>
   <div>
     Feed {{ apiUrl }}
-    <div v-if="isLoading">...Loading</div>
+    <mcv-loading :is="loading" />
     <div v-if="error">Error</div>
     <div v-if="feed">
       <div
@@ -47,6 +47,7 @@
 
 <script>
 import McvPagination from '@/components/Pagination'
+import McvLoading from '@/store/modules/Loading'
 import {actionsTypes} from '@/store/modules/feed'
 import {mapState} from 'vuex'
 import {PostsLimit} from '@/helpers/variables'
@@ -55,6 +56,7 @@ export default {
   name: 'McvFeed',
   components: {
     McvPagination,
+    McvLoading,
   },
   data() {
     return {
