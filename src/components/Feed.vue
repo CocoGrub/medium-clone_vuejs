@@ -74,12 +74,12 @@ export default {
   methods: {
     fetchFeed() {
       const parsedUrl = parseUrl(this.apiUrl)
-      const stringifiedParams = stringify({
+      const stringifiesParams = stringify({
         limit: this.limit,
         offset: this.offset,
         ...parsedUrl.query,
       })
-      const apiUrlWithParams = `${parsedUrl.url}?${stringifiedParams}`
+      const apiUrlWithParams = `${parsedUrl.url}?${stringifiesParams}`
       console.log(apiUrlWithParams)
       this.$store.dispatch(actionsTypes.getFeed, {apiUrl: apiUrlWithParams})
     },
