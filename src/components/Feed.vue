@@ -47,7 +47,7 @@
 
 <script>
 import McvPagination from '@/components/Pagination'
-import McvLoading from '@/store/modules/Loading'
+import McvLoading from '@/components/Loading'
 import {actionsTypes} from '@/store/modules/feed'
 import {mapState} from 'vuex'
 import {PostsLimit} from '@/helpers/variables'

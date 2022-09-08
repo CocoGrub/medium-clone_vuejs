@@ -1,8 +1,8 @@
 <script>
 import {mapState} from 'vuex'
 import {actionsTypes} from '@/store/modules/popularTags'
-import McvLoading from '@/store/modules/Loading'
-import McvErrorMessage from '@/store/modules/ErrorMessage'
+import McvLoading from '@/components/Loading'
+import McvErrorMessage from '@/components/ErrorMessage'
 
 export default {
   name: 'mcv-popularTags',
@@ -32,7 +32,7 @@ export default {
   <div>
     <mcv-loading :is="loading" />
     <mcv-error-message :is="error" />
-    <div class="sidbar" v-if="popularTags">
+    <div class="sidebar" v-if="popularTags">
       <p>Popular tags</p>
       <router-link
         class="tag-default tag-pill"
