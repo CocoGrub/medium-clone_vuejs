@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import McvGlobalFeed from '../views/GlobalFeed.vue'
+import GlobalFeed from '../views/GlobalFeed.vue'
 import YourFeed from '../views/YourFeed.vue'
 import Register from '../views/Register'
 import TagFeed from '../views/TagFeed'
@@ -22,7 +22,7 @@ const routes = [
   {
     path: '/',
     name: 'globalFeed',
-    component: McvGlobalFeed,
+    component: GlobalFeed,
   },
   {
     path: '/feed',

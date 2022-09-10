@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'McvLoading',
+  name: 'McvErrorMessage',
   props: {
     message: {
       type: String,

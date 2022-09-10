@@ -5,12 +5,12 @@
       <div class='row'>
         <div class='col-md-9'>
           <div class='col-md-9'>
-            <McvFeedToggle />
+            <mcv-feed-toggle />
           </div>
           <McvFeed :apiUrl='apiUrl' />
         </div>
         <div class='col-md-3'>
-          <McvPopularTags />
+          <mcv-popular-tags />
         </div>
       </div>
     </div>
@@ -18,16 +18,18 @@
 </template>
 
 <script>
-import McvFeed from '@/components/Feed.vue'
-import McvPopularTags from '@/components/PopularTags.vue'
-import McvBanner from '@/components/Banner.vue'
+import McvFeed from '@/components/Feed'
+import McvPopularTags from '@/components/PopularTags'
+import McvBanner from '@/components/Banner'
+import McvFeedToggle from '@/components/FeedToggle'
 
 export default {
   name: 'McvGlobalFeed',
   components: {
     McvFeed,
     McvPopularTags,
-    McvBanner
+    McvBanner,
+    McvFeedToggle
   },
   data() {
     return {

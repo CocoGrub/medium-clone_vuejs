@@ -1,41 +1,41 @@
 <template>
-  <nav class="navbar navbar-light">
-    <div class="container">
-      <router-link class="navbar-brand" :to="{name: 'McvGlobalFeed'}">
+  <nav class='navbar navbar-light'>
+    <div class='container'>
+      <router-link class='navbar-brand' :to="{name: 'globalFeed'}">
         Medium-clone
       </router-link>
-      <ul class="nav navbar-nav pull-xs-right">
-        <li class="nav-item">
-          <router-link class="nav-link" :to="{name: 'McvGlobalFeed'}" exact>
+      <ul class='nav navbar-nav pull-xs-right'>
+        <li class='nav-item'>
+          <router-link class='nav-link' :to="{name: 'globalFeed'}" exact>
             Home
           </router-link>
         </li>
-        <template v-if="isLoggedIn">
-          <li class="nav-item">
+        <template v-if='isLoggedIn'>
+          <li class='nav-item'>
             <router-link
-              class="nav-link"
+              class='nav-link'
               :to="{name: 'createArticle'}"
-              active-class="active"
+              active-class='active'
             >
-              <i class="ion-compose"></i>
+              <i class='ion-compose'></i>
               &nbsp; New Article
             </router-link>
           </li>
 
-          <li class="nav-item">
+          <li class='nav-item'>
             <router-link
-              class="nav-link"
+              class='nav-link'
               :to="{name: 'settings'}"
-              active-class="active"
+              active-class='active'
             >
-              <i class="ion-gear-a"></i>
+              <i class='ion-gear-a'></i>
               &nbsp; Settings
             </router-link>
           </li>
 
-          <li class="nav-item">
+          <li class='nav-item'>
             <router-link
-              class="nav-link"
+              class='nav-link'
               :to="{
                 name: 'userProfile',
                 params: {
@@ -43,27 +43,27 @@
                 },
               }"
             >
-              <img :src="currentUser.image" alt="currentUser" />
-              <i class="ion-gear-a"></i>
+              <img :src='currentUser.image' alt='currentUser' />
+              <i class='ion-gear-a'></i>
               &nbsp; {{ currentUser.username }}
             </router-link>
           </li>
         </template>
-        <template v-if="isAnonymous">
-          <li class="nav-item">
+        <template v-if='isAnonymous'>
+          <li class='nav-item'>
             <router-link
-              class="nav-link"
+              class='nav-link'
               :to="{name: 'login'}"
-              active-class="active"
+              active-class='active'
             >
               Log in
             </router-link>
           </li>
-          <li class="nav-item">
+          <li class='nav-item'>
             <router-link
-              class="nav-link"
+              class='nav-link'
               :to="{name: 'register'}"
-              active-class="active"
+              active-class='active'
             >
               Sign up
             </router-link>
@@ -79,20 +79,16 @@ import {mapGetters} from 'vuex'
 import {getterTypes} from '@/store/modules/auth'
 
 export default {
-  name: 'mcv-topbar',
+  name: 'McvTopBar',
   data() {
     return {}
   },
   computed: {
-    // ...mapState({
-    //   currentUser: (state) => state.auth.currentUser,
-    //   isLoggedIn: (state) => state.auth.isLoggedIn,
-    // }),
     ...mapGetters({
       currentUser: getterTypes.currentUser,
       isLoggedIn: getterTypes.isLoggedIn,
-      isAnonymous: getterTypes.isAnonymous,
-    }),
-  },
+      isAnonymous: getterTypes.isAnonymous
+    })
+  }
 }
 </script>
