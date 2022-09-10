@@ -60,26 +60,25 @@ export default {
       password: ''
     }
   },
-  methods: {
-    submitForm() {
-      this.$store
-        .dispatch(actionsTypes.login, {
-          email: this.email,
-          password: this.password
-        })
-        .then(() => {
-          this.$router.push({name: 'globalFeed'})
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    }
+  submitForm() {
+    this.$store
+      .dispatch(actionsTypes.login, {
+        email: this.email,
+        password: this.password
+      })
+      .then(() => {
+        this.$router.push({name: 'globalFeed'})
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   },
   computed: {
-    ...mapState({
-      isSubmitted: (state) => state.auth.isSubmitting,
-      validationErrors: (state) => state.auth.validationErrors
-    })
+    ...
+      mapState({
+        isSubmitted: (state) => state.auth.isSubmitting,
+        validationErrors: (state) => state.auth.validationErrors
+      })
   }
 }
 </script>
