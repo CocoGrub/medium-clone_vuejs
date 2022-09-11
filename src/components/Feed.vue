@@ -31,6 +31,7 @@
             <h1>{{ article.title }}</h1>
             <p>{{ article.description }}</p>
             <span>Read more...</span>
+            <mcv-tag-list :tags='article.tagList' />
           </router-link>
         </div>
       </div>
@@ -48,6 +49,7 @@
 <script>
 import McvPagination from '@/components/Pagination'
 import McvLoading from '@/components/Loading'
+import McvTagList from '@/components/Taglist'
 import {actionsTypes} from '@/store/modules/feed'
 import {mapState} from 'vuex'
 import {PostsLimit} from '@/helpers/variables'
@@ -57,7 +59,8 @@ export default {
   name: 'McvFeed',
   components: {
     McvPagination,
-    McvLoading
+    McvLoading,
+    McvTagList
   },
   data() {
     return {

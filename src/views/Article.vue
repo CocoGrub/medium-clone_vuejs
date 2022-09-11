@@ -35,6 +35,7 @@
     <div class='container page'>
       <mcv-loading v-if='isLoading' />
       <mcv-error-message v-if='isLoading' :message='error' />
+      <mcv-tag-list :tags='article.tagList' />
       <div class='row article-content' v-if='article'>
         <div class='col-xs-12'>
           <div>
@@ -52,13 +53,15 @@ import {actionsTypes as articleActionTypes} from '@/store/modules/article'
 import {getterTypes as authGetterTypes} from '@/store/modules/auth'
 import {mapGetters, mapState} from 'vuex'
 import McvLoading from '@/components/Loading'
+import McvTagList from '@/components/Taglist'
 import McvErrorMessage from '@/components/ErrorMessage'
 
 export default {
   name: 'McvArticle',
   components: {
     McvLoading,
-    McvErrorMessage
+    McvErrorMessage,
+    McvTagList
   },
   mounted() {
     this.$store.dispatch(articleActionTypes.getArticle, {slug: this.$route.params.slug})
