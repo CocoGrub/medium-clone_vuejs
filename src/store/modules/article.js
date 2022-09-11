@@ -1,4 +1,4 @@
-import {getArticle} from '@/api/article'
+import {deleteArticle, getArticle} from '@/api/article'
 
 const state = {
   data: null,
@@ -10,6 +10,10 @@ export const mutationsTypes = {
   getArticleStart: '[article] getArticleStart',
   getArticleSuccess: '[article] getArticleSuccess',
   getArticleFail: '[article] getArticleFail',
+
+  deleteArticleStart: '[article] deleteArticleStart',
+  deleteArticleSuccess: '[article] deleteArticleSuccess',
+  deleteArticleFail: '[article] deleteArticleFail',
 }
 
 const mutations = {
@@ -23,10 +27,15 @@ const mutations = {
   [mutationsTypes.getArticleFail]: (state) => {
     state.isLoading = false
   },
+
+  [mutationsTypes.deleteArticleStart]: () => {},
+  [mutationsTypes.deleteArticleSuccess]: () => {},
+  [mutationsTypes.deleteArticleFail]: () => {},
 }
 
 export const actionsTypes = {
   getArticle: '[article] getArticle',
+  deleteArticle: '[article] deleteArticle',
 }
 
 const actions = {
@@ -40,6 +49,19 @@ const actions = {
         })
         .catch(() => {
           context.commit(mutationsTypes.getArticleFail)
+        })
+    })
+  },
+  [actionsTypes.deleteArticle]: (context, {slug}) => {
+    return new Promise((resolve) => {
+      context.commit(mutationsTypes.deleteArticleStart)
+      deleteArticle(slug)
+        .then(() => {
+          context.commit(mutationsTypes.deleteArticleSuccess)
+          resolve()
+        })
+        .catch(() => {
+          context.commit(mutationsTypes.deleteArticleFail)
         })
     })
   },
