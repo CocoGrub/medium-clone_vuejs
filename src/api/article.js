@@ -11,13 +11,14 @@ function deleteArticle(slug) {
 }
 
 function createArticle(articleData) {
+  console.log(articleData)
   return axios
-    .post('/articles/', {article: articleData})
+    .post(`/articles`, {article: articleData})
     .then((response) => response.data.article)
 }
 
-export default {
-  getArticle,
-  deleteArticle,
-  createArticle,
+function updateArticle(slug, articleInput) {
+  return axios.put(`/articles/${slug}`, articleInput)
 }
+
+export {getArticle, deleteArticle, createArticle, updateArticle}

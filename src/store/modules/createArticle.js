@@ -1,4 +1,4 @@
-import articleApi from '@/api/article'
+import {createArticle} from '@/api/article'
 
 const state = {
   isSubmitting: false,
@@ -28,16 +28,17 @@ const mutations = {
 }
 
 const actions = {
-  [actionTypes.createArticle](context, {articleInput}) {
+  [actionTypes.createArticle](context, articleInput) {
+    console.log('action', articleInput)
     return new Promise((resolve) => {
       context.commit(mutationTypes.createArticleStart)
-      articleApi
-        .createArticle(articleInput)
+      createArticle(articleInput)
         .then((article) => {
           context.commit(mutationTypes.createArticleSuccess, article)
           resolve(article)
         })
         .catch((result) => {
+          console.log(result, 'result')
           context.commit(mutationTypes.createArticleFail, result.response.data)
         })
     })

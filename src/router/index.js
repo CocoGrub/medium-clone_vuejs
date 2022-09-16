@@ -1,12 +1,13 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import GlobalFeed from '../views/GlobalFeed.vue'
-import YourFeed from '../views/YourFeed.vue'
+import GlobalFeed from '../views/GlobalFeed'
+import YourFeed from '../views/YourFeed'
 import Register from '../views/Register'
 import TagFeed from '../views/TagFeed'
 import Login from '../views/Login'
 import Article from '@/views/Article'
 import CreatArticle from '@/views/CreateArticle'
+import EditArticle from '@/views/EditArticle'
 
 Vue.use(VueRouter)
 
@@ -49,7 +50,7 @@ const routes = [
   {
     path: '/articles/:slug/edit',
     name: 'editArticle',
-    component: Login,
+    component: EditArticle,
   },
   {
     path: '/settings',

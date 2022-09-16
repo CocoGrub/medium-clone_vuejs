@@ -32,7 +32,8 @@ export default {
   },
   methods: {
     onSubmit(articleData) {
-      this.$store.dispatch(actionTypes.createArticle, {articleData}).then((article) => {
+      console.log('createArticleVue', articleData)
+      this.$store.dispatch(actionTypes.createArticle, articleData).then((article) => {
         this.$router.push({name: 'article', params: {slug: article.slug}})
       })
     }

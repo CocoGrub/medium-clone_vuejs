@@ -4,5 +4,6 @@
   "printWidth": 80,
   "bracketSpacing": false,
   "semi": false,
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "singleAttributePerLine": true
 }

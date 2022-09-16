@@ -113,7 +113,7 @@ const actions = {
       authApi
         .getCurrentUser()
         .then((response) => {
-          console.log(response.data.user)
+          console.log('user', response.data.user)
           context.commit(
             mutationsTypes.getCurrentUserSuccess,
             response.data.user

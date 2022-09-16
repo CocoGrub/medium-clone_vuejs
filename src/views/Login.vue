@@ -60,19 +60,22 @@ export default {
       password: ''
     }
   },
-  submitForm() {
-    this.$store
-      .dispatch(actionsTypes.login, {
-        email: this.email,
-        password: this.password
-      })
-      .then(() => {
-        this.$router.push({name: 'globalFeed'})
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  methods: {
+    submitForm() {
+      this.$store
+        .dispatch(actionsTypes.login, {
+          email: this.email,
+          password: this.password
+        })
+        .then(() => {
+          this.$router.push({name: 'globalFeed'})
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
   },
+
   computed: {
     ...
       mapState({
