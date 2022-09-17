@@ -54,7 +54,7 @@
   </div>
 </template>
 <script>
-import {actionsTypes as articleActionTypes} from '@/store/modules/article'
+import {actionTypes as articleActionTypes} from '@/store/modules/article'
 import {getterTypes as authGetterTypes} from '@/store/modules/auth'
 import {mapGetters, mapState} from 'vuex'
 import McvLoading from '@/components/Loading'

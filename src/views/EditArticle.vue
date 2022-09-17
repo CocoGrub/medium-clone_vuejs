@@ -15,7 +15,7 @@
 import McvArticleForm from '@/components/ArticleForm'
 import McvLoading from '@/components/Loading'
 import {mapState} from 'vuex'
-import {actionTypes as actionTypesCreateArticle} from '@/store/modules/editArticle'
+import {actionTypes as actionTypesEditArticle} from '@/store/modules/editArticle'
 import {actionTypes as actionTypesArticle} from '@/store/modules/article'
 
 export default {
@@ -36,15 +36,15 @@ export default {
         title: this.article.title,
         description: this.article.description,
         body: this.article.body,
-        tagList: this.article.taglist
+        tagList: this.article.tagList || []
       }
 
     },
     ...mapState({
-      isSubmitting: (state) => state.createArticle.isSubmitting,
-      isLoading: (state) => state.createArticle.isSubmitting,
-      article: (state) => state.article.article,
-      validationErrors: (state) => state.createArticle.validationErrors
+      isSubmitting: (state) => state.editArticle.isSubmitting,
+      isLoading: (state) => state.editArticle.isLoading,
+      article: (state) => state.article.data,
+      validationErrors: (state) => state.editArticle.validationErrors
     })
   },
   mounted() {
@@ -53,7 +53,7 @@ export default {
   methods: {
     onSubmit(articleInput) {
       const slug = this.$route.params.slug
-      this.$store.dispatch(actionTypesCreateArticle.updateArticle, {slug, articleInput}).then((article) => {
+      this.$store.dispatch(actionTypesEditArticle.updateArticle, {slug, articleInput}).then((article) => {
         this.$router.push({name: 'article', params: {slug: article.slug}})
       })
     }

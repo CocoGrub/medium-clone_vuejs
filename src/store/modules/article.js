@@ -33,13 +33,13 @@ const mutations = {
   [mutationsTypes.deleteArticleFail]: () => {},
 }
 
-export const actionsTypes = {
+export const actionTypes = {
   getArticle: '[article] getArticle',
   deleteArticle: '[article] deleteArticle',
 }
 
 const actions = {
-  [actionsTypes.getArticle]: (context, {slug}) => {
+  [actionTypes.getArticle]: (context, {slug}) => {
     return new Promise((resolve) => {
       context.commit(mutationsTypes.getArticleStart)
       getArticle(slug)
@@ -52,7 +52,7 @@ const actions = {
         })
     })
   },
-  [actionsTypes.deleteArticle]: (context, {slug}) => {
+  [actionTypes.deleteArticle]: (context, {slug}) => {
     return new Promise((resolve) => {
       context.commit(mutationsTypes.deleteArticleStart)
       deleteArticle(slug)

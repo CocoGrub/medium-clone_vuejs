@@ -18,7 +18,9 @@ function createArticle(articleData) {
 }
 
 function updateArticle(slug, articleInput) {
-  return axios.put(`/articles/${slug}`, articleInput)
+  return axios
+    .put(`/articles/${slug}`, articleInput)
+    .then((response) => response.data.article)
 }
 
 export {getArticle, deleteArticle, createArticle, updateArticle}
